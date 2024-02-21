@@ -3,13 +3,13 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 // import { useApi } from "./hooks/useApi"
 
-export type Repository = {
+export type RepositoryProps = {
   full_name: string
   description: string
 }
 
 export function Repositories() {
-  const { data: repositories, isFetching } = useQuery<Repository[]>('repositories', async () => {
+  const { data: repositories, isFetching } = useQuery<RepositoryProps[]>('repositories', async () => {
     const response = await axios.get('https://api.github.com/users/naanon/repos')
 
     return response.data

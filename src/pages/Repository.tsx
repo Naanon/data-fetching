@@ -1,6 +1,6 @@
 import { useQueryClient } from "react-query"
 import { useParams } from "react-router-dom"
-import { Repository } from "./Repositories"
+import { RepositoryProps } from "./Repositories"
 
 export function Repository() {
   const params = useParams()
@@ -9,7 +9,7 @@ export function Repository() {
   const queryClient = useQueryClient()
 
   async function handleChangeRepositoryDescription() {
-    const previousRepositories = queryClient.getQueryData<Repository[]>('repositories')
+    const previousRepositories = queryClient.getQueryData<RepositoryProps[]>('repositories')
 
     if (previousRepositories) {
       const nextRepositories = previousRepositories.map((repository) => {
