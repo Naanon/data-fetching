@@ -14,15 +14,16 @@ export function App() {
   return (
     <>
       <ul>
-        {isFetching && <p>Carregando...</p>}
-        {repositories?.map((repository) => {
-          return (
-            <li key={repository.full_name}>
-              <strong>{repository.full_name}</strong>
-              <p>{repository.description}</p>
-            </li>
-          )
-        })}
+        {(isFetching === true ? <p>Carregando...</p> :
+          (repositories?.map((repository) => {
+            return (
+              <li key={repository.full_name}>
+                <strong>{repository.full_name}</strong>
+                <p>{repository.description}</p>
+              </li>
+            )
+          }))
+        )}
       </ul>
     </>
   )

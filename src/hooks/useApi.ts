@@ -19,7 +19,7 @@ export function useApi<T = unknown>(url: string, options?: AxiosRequestConfig) {
         setError(error)
       })
       .finally(() => {
-        setIsFetching(true)
+        setIsFetching(false)
       })
   }, [])
 
