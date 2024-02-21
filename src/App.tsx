@@ -1,30 +1,13 @@
-import { useApi } from "./hooks/useApi"
+import { Route, Routes } from "react-router-dom";
 
-type Repository = {
-  full_name: string
-  description: string
-}
+import { Repositories } from "./pages/Repositories";
+import { Repository } from "./pages/Repository";
 
 export function App() {
-  const {
-    data: repositories,
-    isFetching
-  } = useApi<Repository[]>('users/naanon/repos')
-
   return (
-    <>
-      <ul>
-        {(isFetching === true ? <p>Carregando...</p> :
-          (repositories?.map((repository) => {
-            return (
-              <li key={repository.full_name}>
-                <strong>{repository.full_name}</strong>
-                <p>{repository.description}</p>
-              </li>
-            )
-          }))
-        )}
-      </ul>
-    </>
+    <Routes>
+      <Route path="/" element={<Repositories />} />
+      <Route path="/repository/*" element={<Repository />} />
+    </Routes>
   )
 }
